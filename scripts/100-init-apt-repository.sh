@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-gpg --output /usr/share/nginx/html/KEY.gpg --armor --export slfi-delivery-toolkit01-dev
+gpg --batch --yes --output /usr/share/nginx/html/KEY.gpg --armor --export slfi-delivery-toolkit01-dev
 (cd /usr/share/nginx/html; dpkg-scanpackages -m . > /usr/share/nginx/html/Packages)
 gzip -k -f /usr/share/nginx/html/Packages
 generate-release.sh > /usr/share/nginx/html/Release
