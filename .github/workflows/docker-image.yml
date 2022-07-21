@@ -13,9 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +%s)"
 
     - name: Build and push Docker images
       uses: docker/build-push-action@v3.1.0
       with:
         push: true
-        tags: maxcsr/apt-repository:$(date +%s)
+        tags: maxcsr/apt-repository:${{ steps.date.outputs.date }}
