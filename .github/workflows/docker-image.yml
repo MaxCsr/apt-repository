@@ -17,6 +17,12 @@ jobs:
       id: date
       run: echo "::set-output name=date::$(date +%s)"
 
+    - name: Docker Login
+      uses: docker/login-action@v2.0.0
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
     - name: Build and push Docker images
       uses: docker/build-push-action@v3.1.0
       with:
