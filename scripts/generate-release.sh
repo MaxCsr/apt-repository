@@ -18,8 +18,8 @@ do_hash() {
 cat << EOF
 Origin: Example Repository
 Label: Example
-Suite: stable
-Codename: stable
+Suite: $(basename "$PWD")
+Codename: $(basename "$PWD")
 Version: 1.0
 Architectures: amd64 arm64 arm7
 Components: main
@@ -27,7 +27,6 @@ Description: An example software repository
 Date: $(date -Ru)
 EOF
 
-cd /usr/share/nginx/html
 do_hash "MD5Sum" "md5sum"
 do_hash "SHA1" "sha1sum"
 do_hash "SHA256" "sha256sum"
